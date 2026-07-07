@@ -2,5 +2,23 @@ name: C++ CI
 
 on:
   push:
-    branches: [ main ]
-    
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Check GCC Version
+        run: g++ --version
+
+      - name: Compile C++ Program
+        run: |
+          g++ Arrays/minMax.cpp -o minMax
+
+      - name: Success Message
+        run: echo "Compilation Successful!"
